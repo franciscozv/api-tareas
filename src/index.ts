@@ -13,6 +13,16 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get('/', (req, res) => {
+  res.json({
+    mensaje: 'API de Tareas',
+    endpoints: {
+      listar: 'GET /api/tasks',
+      crear: 'POST /api/tasks',
+    }
+  });
+});
+
 app.use('/api', taskRoutes);
 
 app.use((req, res) => {
